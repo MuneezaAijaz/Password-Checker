@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Password Strength Checker</h1>
+            <p class="subtitle">
+                Check your password security in real-time and generate strong passwords.
+            </p>
+
+            <!-- Password Input -->
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                >
+
+                <button id="togglePassword">
+                    Show
+                </button>
+
+            </div>
+
+            <!-- Strength Bar -->
+            <div class="strength-container">
+                <div id="strengthBar"></div>
+            </div>
+
+            <!-- Strength Text -->
+            <div id="strengthText">
+                Password Strength: Very Weak
+            </div>
+
+            <!-- Checklist -->
+            <div class="requirements">
+
+                <h3>Password Requirements</h3>
+
+                <ul>
+
+                    <li id="length">
+                        * At least 8 characters
+                    </li>
+
+                    <li id="uppercase">
+                        * Uppercase letter
+                    </li>
+
+                    <li id="lowercase">
+                        * Lowercase letter
+                    </li>
+
+                    <li id="number">
+                        * Number
+                    </li>
+
+                    <li id="special">
+                        * Special character
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Suggestions -->
+            <div class="suggestions">
+
+                <h3>Suggestions</h3>
+
+                <p id="suggestionText">
+                    <!-- Start typing a password... -->
+                </p>
+
+            </div>
+
+            <!-- Generate Password -->
+            <button id="generateBtn">
+                Generate Strong Password
+            </button>
+
+        </div>
+
+    </div>
+
+    
+    <script src="pass.js"></script>
+
+</body>
+</html>
