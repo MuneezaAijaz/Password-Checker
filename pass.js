@@ -22,23 +22,29 @@ let specialReq = document.getElementById("special");
 
 // Waits for button clicked 
 togglePassword.addEventListener("click", () => { 
-
-    if(passwordInput.type === "password"){
+// Agr password hiddent hoga tu ye condition true hogi 
+    if(passwordInput.type === "password"){  
+        // password ki type "password" ki jagah text ho jyegi or password vivsible ho jaygea
         passwordInput.type = "text";
+        // Button per Hide ajayega 
         togglePassword.textContent = "Hide";
     }
+    // Agar password pehle se hi visible ho tu : 
     else{
+        // password ki type phir se password ho jayegi 
         passwordInput.type = "password";
+        // Button per show likha hoa jaygea 
         togglePassword.textContent = "Show";
     }
 
 });
 
-// ======================================
-// PASSWORD ANALYSIS
-// ======================================
 
+// PASSWORD ANALYSIS
+
+// ye code her baar jb koi password type karega , usse check kerne ke liye istemal hota he 
 passwordInput.addEventListener("input", () => {
+    // jb bhi koii password likhe tu neeche wala code chaalega
     checkPassword(passwordInput.value);
 });
 
@@ -48,11 +54,11 @@ function checkPassword(password){
 
     // Check conditions
 
-    const hasLength = password.length >= 8;
-    const hasUpper = /[A-Z]/.test(password);
-    const hasLower = /[a-z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasSpecial = /[^A-Za-z0-9]/.test(password);
+    let hasLength = password.length >= 8;
+    let hasUpper = /[A-Z]/.test(password);
+    let hasLower = /[a-z]/.test(password);
+    let hasNumber = /[0-9]/.test(password);
+    let hasSpecial = /[^A-Za-z0-9]/.test(password);
 
     // Update checklist
 
@@ -81,12 +87,14 @@ function checkPassword(password){
     );
 }
 
-// ======================================
+
 // UPDATE CHECKLIST
-// ======================================
 
+// element : jo element update kerna he 
+// valid : Booleab value True / false 
+// text : wo text jo requirement ke tour per dikhana he 
 function updateRequirement(element, valid, text){
-
+// agar valid ki value true he tu ye block chalega 
     if(valid){
         element.innerHTML = "✓ " + text;
         element.className = "valid";
@@ -98,9 +106,9 @@ function updateRequirement(element, valid, text){
 
 }
 
-// ======================================
+
 // STRENGTH BAR
-// ======================================
+
 
 function updateStrength(score){
 
@@ -109,31 +117,35 @@ function updateStrength(score){
     let text = "";
 
     switch(score){
-
+// agr password me  0 or 1 point sahi ho tu : 
         case 0:
         case 1:
             width = 20;
             color = "#ff3b30";
             text = "Very Weak";
             break;
+// agr password me 2 point sahi ho tu : 
 
         case 2:
             width = 40;
             color = "#ff9500";
             text = "Weak";
             break;
+// agr password me 3point sahi ho tu : 
 
         case 3:
             width = 60;
             color = "#ffcc00";
             text = "Medium";
             break;
+// agr password me 4 point sahi ho tu : 
 
         case 4:
             width = 80;
             color = "#34c759";
             text = "Strong";
             break;
+// agr password me 5 point sahi ho tu : 
 
         case 5:
             width = 100;
@@ -141,17 +153,18 @@ function updateStrength(score){
             text = "Very Strong";
             break;
     }
-
+// update bar width : example : 80   + % = 80%
     strengthBar.style.width = width + "%";
     strengthBar.style.background = color;
 
     strengthText.textContent =
+    // element ke andr text change kerta he 
         "Password Strength: " + text;
 }
 
-// ======================================
+
 // SUGGESTIONS
-// ======================================
+
 
 function generateSuggestions(
     length,
@@ -197,24 +210,25 @@ function generateSuggestions(
     }
 }
 
-// ======================================
+
 // GENERATE STRONG PASSWORD
-// ======================================
+
 
 generateBtn.addEventListener("click", () => {
 
-    const chars =
+    let chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
         "abcdefghijklmnopqrstuvwxyz" +
         "0123456789" +
         "!@#$%^&*()_+{}[]<>?/";
-
     let password = "";
-
+// ye loop 14 baar chalega / 0 se shuru hoga / 13 tk
     for(let i = 0; i < 14; i++){
 
-        const randomIndex =
+        let randomIndex =
+        // neeche wala number round off kerga  
             Math.floor(
+                // chars.lenght upper diye hoe saare characters ko ginta he / total 88
                 Math.random() * chars.length
             );
 
